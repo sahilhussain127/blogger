@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // import { useState } from "react";
 // import reactLogo from "./assets/react.svg";
 // import viteLogo from "/vite.svg";
@@ -25,7 +26,7 @@ import axios from "axios";
 import EmployeeForm from "./components/EmployeeForm";
 import { useEffect, useState } from "react";
 
-const apiUrl = import.meta.env.REACT_APP_API_URL;
+const apiUrl = import.meta.env.VITE_BASE_URL;
 console.log(apiUrl);
 
 function App() {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-const apiUrl = import.meta.env.REACT_APP_API_URL;
+const apiUrl = import.meta.env.VITE_BASE_URL;
 console.log(apiUrl);
 
 const EmployeeForm = ({ fetchEmployee }) => {
