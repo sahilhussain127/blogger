@@ -61,7 +61,7 @@ function App() {
     <div>
       <GlobalLoader />
 
-      <h1>Welcome New</h1>
+      <h1>Welcome</h1>
       {/* <button onClick={() => fetchEmployee()}>Fetch Employees</button> */}
       {/* <button onClick={() => dispatch(fetchUser())}>Fetch User</button> */}
       <EmployeeForm fetchEmployee={fetchEmployee} />
