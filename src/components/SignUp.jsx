@@ -1,6 +1,27 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { signUpCall } from "../redux/actions/userActions";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = async () => {
+    dispatch(
+      signUpCall(formData, () => {
+        navigate("/");
+      })
+    );
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-grayLight">
       <div className="bg-white shadow-lg rounded-2xl flex overflow-hidden max-w-4xl w-full">
@@ -12,21 +33,65 @@ const SignUp = () => {
 
           <input
             type="text"
-            placeholder="Name"
+            placeholder="First Name"
             className="mb-4 p-3 border rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primaryGradientEnd"
+            value={formData.first_name}
+            onChange={(e) =>
+              setFormData((prev) => {
+                return {
+                  ...prev,
+                  first_name: e.target.value,
+                };
+              })
+            }
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            className="mb-4 p-3 border rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primaryGradientEnd"
+            value={formData.last_name}
+            onChange={(e) =>
+              setFormData((prev) => {
+                return {
+                  ...prev,
+                  last_name: e.target.value,
+                };
+              })
+            }
           />
           <input
             type="email"
             placeholder="Email"
             className="mb-4 p-3 border rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primaryGradientEnd"
+            value={formData.email}
+            onChange={(e) =>
+              setFormData((prev) => {
+                return {
+                  ...prev,
+                  email: e.target.value,
+                };
+              })
+            }
           />
           <input
             type="password"
             placeholder="Password"
             className="mb-4 p-3 border rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primaryGradientEnd"
+            value={formData.password}
+            onChange={(e) =>
+              setFormData((prev) => {
+                return {
+                  ...prev,
+                  password: e.target.value,
+                };
+              })
+            }
           />
 
-          <button className="bg-gradient-to-r from-primaryGradientStart to-primaryGradientEnd text-white font-bold py-2 rounded-full mt-2 transition hover:opacity-90">
+          <button
+            className="bg-gradient-to-r from-primaryGradientStart to-primaryGradientEnd text-white font-bold py-2 rounded-full mt-2 transition hover:opacity-90"
+            onClick={handleSubmit}
+          >
             SIGN UP
           </button>
         </div>
